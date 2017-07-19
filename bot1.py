@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+#the code is good
 from telegram.ext import Updater, CommandHandler
 
 import pickle
