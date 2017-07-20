@@ -1,7 +1,5 @@
 import os
-
 os.system("wget https://ktu.edu.in/eu/core/announcements.htm")
-
 f=open("announcements.htm")
 os.remove("announcements.htm")
 
