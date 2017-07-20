@@ -5,15 +5,20 @@ os.system("wget https://ktu.edu.in/eu/core/announcements.htm")
 f=open("announcements.htm")
 os.remove("announcements.htm")
 
+class announcements:
+    def __init__(self):
+        self.title=''
+        
+
 count=0
 l=[]
-with f as fp:
-	for line in fp:
-		if '<!-- <a target="_blank">' in line:
-			l.append(line)
-			if count>=5:
-				break
-			count+=1
+while(True):
+    line=f.readline()
+    if '<!-- <a target="_blank">' in line:
+        l.append(line)
+        if count>=5:
+            break
+        count+=1
 
 
 def stripper(a):
