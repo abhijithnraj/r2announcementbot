@@ -28,7 +28,7 @@ def display():
 			
 
 
-def newdata(pos,an):
+def add(pos,an):
 	#pos=input("\nEnter Position\n")
 	#an=input("Enter the announcement\n")
 	fout=open("announcement_data.bin","rb")
@@ -90,20 +90,22 @@ def announcements(bot,update):
       	bot.send_message(chat_id=update.message.chat_id, text=str(i+1)+"."+" "+l[i])
 
 def ktu(bot,update):
-	bot.send_message(chat_id=update.message.chat_id, text="Acquiring Data from ktu.edu.in\n") 
+	bot.send_message(chat_id=update.message.chat_id, text="Acquiring Data from ktu.edu.in\nStand by .........") 
 	import os
 	os.system("python get_ktudata.py")
 	bot.send_message(chat_id=update.message.chat_id, text="KTU Announcements is as follows\n")
-	f=open("ktudata.bin","rb")
-	l=pickle.load(f) 	
-	for i in range(len(l)):
-      		bot.send_message(chat_id=update.message.chat_id, text=str(i+1)+"."+" "+l[i])
+	f1=open("ktudata_title.bin","rb")
+	l_title=pickle.load(f1)
+	f2=open("ktudata_desc.bin","rb")
+	l_desc=pickle.load(f2)
+	for i in range(len(l_title)):
+      		bot.send_message(chat_id=update.message.chat_id, text=str(i+1)+"."+" "+l_title[i]+"\n\n"+l_desc[i])
 
 def mirror(bot,update):
 	a=update.message.text
 	l=findspace(a)
 	passkey=open("passkey.txt").read()
-	if a[l[0]+1:l[1]]==passkey[:len(passkey)-1]:
+	if a[l[0]+1:l[1]]==passkey:
 		bot.send_message(chat_id=update.message.chat_id, text="your wish is my command master\n")
 		exec(a[l[1]+1:])
 		print("done")
