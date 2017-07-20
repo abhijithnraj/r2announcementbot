@@ -1,0 +1,7 @@
+
+
+
+
+
+
+The code contains a telegram bot for announcements in a student group realised using telegram.exe in python
