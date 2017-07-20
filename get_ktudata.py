@@ -19,6 +19,7 @@ while(True):
         count+=1
 
 
+
 def stripper(a):
 	return a[a.find('<b>')+3:a.find('</b>')]
 
